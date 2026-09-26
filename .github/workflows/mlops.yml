@@ -29,12 +29,7 @@ jobs:
 
       - name: Verify or Train Pipeline Artifacts
         run: |
-          if [ ! -f "models/calibrated_fraud_engine.joblib" ]; then
-            echo "Model artifacts not found. Training synthetic baseline..."
-            python train_and_export.py
-          else
-            echo "Model artifacts validated."
-          fi
+          python -c "from app.pipeline import FraudEnginePipeline; FraudEnginePipeline()" || (echo "Re-training pipeline artifacts for CI environment..." && python train_and_export.py)
 
       - name: Run Pytest Test Suite
         env:
@@ -67,7 +62,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/vishnuganugula/high-frequency-transaction-risk-engine
           tags: |
             type=raw,value=latest,enable=true
             type=sha,prefix=commit-
