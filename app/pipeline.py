@@ -3,7 +3,7 @@ import json
 import joblib
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timezone
 
 class FraudEnginePipeline:
     def __init__(self, models_dir: str = None):
@@ -78,7 +78,7 @@ class FraudEnginePipeline:
             "decision": decision,
             "nameOrig": txn_dict.get("nameOrig", "UNKNOWN"),
             "amount": float(txn_dict.get("amount", 0.0)),
-            "timestamp": datetime.utcnow().isoformat() + "Z"
+            "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         }
 
     def predict_batch(self, txn_list: list) -> list:
