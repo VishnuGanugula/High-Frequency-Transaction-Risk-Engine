@@ -1,0 +1,21 @@
+{
+  "model_name": "High-Frequency Transaction Fraud Engine",
+  "optimal_threshold": 0.09,
+  "n_enriched_features": 19,
+  "numeric_cols": [
+    "amount",
+    "oldbalanceOrg",
+    "newbalanceOrig",
+    "oldbalanceDest",
+    "newbalanceDest",
+    "txn_count_rolling",
+    "txn_amount_rolling",
+    "orig_balance_inconsistency",
+    "dest_balance_inconsistency"
+  ],
+  "categorical_cols": [
+    "type"
+  ],
+  "unsupervised_components": 5,
+  "contamination": 0.01
+}

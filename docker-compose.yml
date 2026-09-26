@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  fraud-engine-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/vishnuganugula/high-frequency-transaction-risk-engine:latest
+    container_name: fraud_engine_microservice
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      - PORT=8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
