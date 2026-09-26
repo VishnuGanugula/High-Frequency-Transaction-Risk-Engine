@@ -1,10 +1,10 @@
-# 🚀 High-Frequency Transaction Fraud Engine
+#  High-Frequency Transaction Fraud Engine
 
 A production-grade, containerized MLOps microservice designed for real-time fraud detection on financial transaction streams (PaySim dataset scale). Built with **scikit-learn**, **LightGBM**, **Imbalanced-Learn**, **SHAP**, **FastAPI**, **Docker**, and deployed directly via **GitHub Container Registry (GHCR)** and **GitHub Actions**.
 
 ---
 
-## 🏛 Architecture & MLOps Pipeline
+##  Architecture & MLOps Pipeline
 
 ```mermaid
 graph TD
@@ -32,7 +32,7 @@ graph TD
 
 ---
 
-## 🛠 4-Step Containerized Microservice Deployment
+##  4-Step Containerized Microservice Deployment
 
 ### 1. Serialize the Pipeline (Model Export)
 The engine trains on features enriched with Gaussian Mixture user personas and Isolation Forest anomaly scores. The fitted `ColumnTransformer`, `GMM`, `IsolationForest`, and `CalibratedClassifierCV` models are saved into static binary `.joblib` files in `models/`.
@@ -74,19 +74,7 @@ Without external cloud subscription costs, this project deploys directly onto **
 
 ---
 
-## ⚡ Quick Start & Deployment Commands
-
-### Push directly to GitHub Repository:
-
-```bash
-git remote add origin https://github.com/VishnuGanugula/High-Frequency-Transaction-Risk-Engine.git
-git branch -M main
-git push -u origin main
-```
-
----
-
-## 🧪 Sample API Request & Response
+##  Sample API Request & Response
 
 ### Request (`POST /predict_fraud`)
 ```json
@@ -119,7 +107,7 @@ git push -u origin main
 
 ---
 
-## 📊 Running Local Tests
+##  Running Local Tests
 
 ```bash
 PYTHONPATH=. pytest tests/
